@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import block from 'bem-cn';
 import { HiddenOnlyAuth, VisibleOnlyAuth } from './util/wrappers.js'
 
 // UI Components
@@ -12,6 +13,7 @@ import './css/open-sans.css'
 import './css/pure-min.css'
 import './App.css'
 
+const b = block('app');
 class App extends Component {
   render() {
     const OnlyAuthLinks = VisibleOnlyAuth(() =>
@@ -36,7 +38,7 @@ class App extends Component {
     )
 
     return (
-      <div className="App">
+      <div className={b()}>
         <nav className="navbar pure-menu pure-menu-horizontal">
           <ul className="pure-menu-list navbar-right">
             <OnlyGuestLinks />
