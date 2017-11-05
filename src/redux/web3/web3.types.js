@@ -1,0 +1,3 @@
+const PREFIX = 'WEB3/'
+
+export const WEB3_INITIALIZED = PREFIX + 'WEB3_INITIALIZED'

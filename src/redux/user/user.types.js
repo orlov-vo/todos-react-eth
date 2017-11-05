@@ -1,0 +1,5 @@
+const PREFIX = 'USER/'
+
+export const USER_LOGGED_IN = PREFIX + 'USER_LOGGED_IN'
+export const USER_LOGGED_OUT = PREFIX + 'USER_LOGGED_OUT'
+export const USER_UPDATED = PREFIX + 'USER_UPDATED'

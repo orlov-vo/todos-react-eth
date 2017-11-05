@@ -3,19 +3,21 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import { syncHistoryWithStore } from 'react-router-redux'
-import { UserIsAuthenticated, UserIsNotAuthenticated } from './util/wrappers.js'
-import getWeb3 from './util/web3/getWeb3'
-import './util/bem'
+
+// Utils
+import { UserIsAuthenticated, UserIsNotAuthenticated } from './utils/wrappers'
+import getWeb3 from './utils/web3'
+import './utils/bem'
 
 // Layouts
-import App from './App'
-import Home from './layouts/home/Home'
-import Dashboard from './layouts/dashboard/Dashboard'
-import SignUp from './user/layouts/signup/SignUp'
-import Profile from './user/layouts/profile/Profile'
+import App from './containers/App'
+import Home from './components/Home'
+import Dashboard from './components/Dashboard'
+import SignUp from './components/SignUp'
+import Profile from './components/Profile'
 
 // Redux Store
-import store from './store'
+import store from './redux/configureStore'
 
 // Initialize react-router-redux.
 const history = syncHistoryWithStore(browserHistory, store)
