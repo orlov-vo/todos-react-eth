@@ -1,7 +1,7 @@
 const contract = require('truffle-contract')
 
 import { AuthenticationContract } from '../contracts'
-import store from '../redux/configureStore'
+import { store } from '../global'
 import loginUser from './loginUser'
 
 export function signUpUser(name) {

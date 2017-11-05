@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { Route, Switch } from 'react-router'
+import { Link } from 'react-router-dom'
 import block from 'bem-cn';
 
 import { HiddenOnlyAuth, VisibleOnlyAuth } from '../utils/wrappers'
+import { UserIsAuthenticated, UserIsNotAuthenticated } from '../utils/wrappers'
 
 // UI Components
+import Home from '../components/Home'
+import Login from '../components/Login'
+import DashboardContainer from './DashboardContainer'
+import SignUp from '../components/SignUp'
+import Profile from '../components/Profile'
+
+// UI Containers
 import LoginButton from './LoginButton'
 import LogoutButton from './LogoutButton'
 
 // Styles
-import '../styles/oswald.css'
-import '../styles/open-sans.css'
-import '../styles/pure-min.css'
-import './App.css'
+import './App.scss'
 
 const b = block('app');
 class App extends Component {
@@ -48,7 +54,13 @@ class App extends Component {
           <Link to="/" className="pure-menu-heading pure-menu-link">TODO List D-App</Link>
         </nav>
 
-        {this.props.children}
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/dashboard" component={UserIsAuthenticated(DashboardContainer)} />
+          <Route path="/login" component={UserIsNotAuthenticated(Login)} />
+          <Route path="/signup" component={UserIsNotAuthenticated(SignUp)} />
+          <Route path="/profile" component={UserIsAuthenticated(Profile)} />
+        </Switch>
       </div>
     );
   }

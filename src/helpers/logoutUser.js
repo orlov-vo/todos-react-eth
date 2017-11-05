@@ -1,5 +1,6 @@
-import { browserHistory } from 'react-router'
+import { push } from 'react-router-redux'
 
+import { store } from '../global'
 import { userLoggedOut } from '../redux/user/user.actions'
 
 export function logoutUser() {
@@ -8,7 +9,7 @@ export function logoutUser() {
     dispatch(userLoggedOut())
 
     // Redirect home.
-    return browserHistory.push('/')
+    return store.dispatch(push('/'))
   }
 }
 

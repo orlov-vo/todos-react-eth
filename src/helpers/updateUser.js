@@ -2,7 +2,7 @@ const contract = require('truffle-contract')
 
 import { AuthenticationContract } from '../contracts'
 import { userUpdated } from '../redux/user/user.actions'
-import store from '../redux/configureStore'
+import { store } from '../global'
 
 export function updateUser(name) {
   let web3 = store.getState().web3.web3Instance
