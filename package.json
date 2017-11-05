@@ -2,6 +2,11 @@
   "name": "todos-react-eth",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Vladislav Orlov",
+    "email": "i@orlov-vo.ru",
+    "url": "http://orlov-vo.ru"
+  },
   "devDependencies": {
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
