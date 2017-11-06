@@ -1,4 +1,4 @@
-import block from 'bem-cn';
+import block from 'bem-cn'
 
 /**
  * Configure BEM Class Names generator
@@ -6,6 +6,6 @@ import block from 'bem-cn';
  */
 block.setup({
   ns: 'c-',
-});
+})
 
-export * from 'bem-cn';
+export * from 'bem-cn'

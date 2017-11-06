@@ -1,9 +1,9 @@
-@import "./variables.scss";
+@import './variables.scss';
 
 // Mixins
-@import "./mixins/clearfix";
-@import "./mixins/hide-text";
+@import './mixins/clearfix';
+@import './mixins/hide-text';
 
 // 3-rd mixins
-@import "~sass-bem-constructor/dist/sass-bem-constructor";
-@import "./vendor/bem-constructor";
+@import '~sass-bem-constructor/dist/sass-bem-constructor';
+@import './vendor/bem-constructor';

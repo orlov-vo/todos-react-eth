@@ -1,5 +1,5 @@
-var Migrations = artifacts.require("./zeppelin/lifecycle/Migrations.sol");
+var Migrations = artifacts.require('./zeppelin/lifecycle/Migrations.sol')
 
 module.exports = function (deployer) {
-  deployer.deploy(Migrations);
-};
+  deployer.deploy(Migrations)
+}

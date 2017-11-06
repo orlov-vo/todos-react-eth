@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 
@@ -12,19 +12,15 @@ import { store, history } from './global'
 // App
 import App from './containers/App'
 
-
 it('renders without crashing', () => {
-  return getWeb3()
-    .then(results => {
-      ReactDOM.render(
-        (
-          <Provider store={store}>
-            <ConnectedRouter history={history}>
-              <App />
-            </ConnectedRouter>
-          </Provider>
-        ),
-        document.createElement('div')
-      )
-    })
+  return getWeb3().then(results => {
+    ReactDOM.render(
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <App />
+        </ConnectedRouter>
+      </Provider>,
+      document.createElement('div'),
+    )
+  })
 })

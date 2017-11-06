@@ -8,7 +8,7 @@ export const UserIsAuthenticated = connectedReduxRedirect({
   redirectPath: '/login',
   authenticatedSelector: state => state.user.data !== null,
   redirectAction: routerActions.replace,
-  wrapperDisplayName: 'UserIsAuthenticated'
+  wrapperDisplayName: 'UserIsAuthenticated',
 })
 
 export const UserIsNotAuthenticated = connectedReduxRedirect({
@@ -17,7 +17,7 @@ export const UserIsNotAuthenticated = connectedReduxRedirect({
   redirectAction: routerActions.replace,
   failureRedirectPath: (state, ownProps) => ownProps.location.query.redirect || '/dashboard',
   wrapperDisplayName: 'UserIsNotAuthenticated',
-  allowRedirectBack: false
+  allowRedirectBack: false,
 })
 
 // UI Component Wrappers

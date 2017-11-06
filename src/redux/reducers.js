@@ -7,7 +7,7 @@ import userReducer from './user/user.reducer'
 const reducer = combineReducers({
   routing: routerReducer,
   user: userReducer,
-  web3: web3Reducer
+  web3: web3Reducer,
 })
 
 export default reducer

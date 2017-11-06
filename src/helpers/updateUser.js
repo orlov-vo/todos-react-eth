@@ -1,4 +1,4 @@
-const contract = require('truffle-contract')
+import contract from 'truffle-contract'
 
 import { AuthenticationContract } from '../contracts'
 import { userUpdated } from '../redux/user/user.actions'
@@ -9,7 +9,6 @@ export function updateUser(name) {
 
   // Double-check web3's status.
   if (typeof web3 !== 'undefined') {
-
     return function (dispatch) {
       // Using truffle-contract we create the authentication object.
       const authentication = contract(AuthenticationContract)
@@ -22,20 +21,21 @@ export function updateUser(name) {
       web3.eth.getCoinbase((error, coinbase) => {
         // Log errors, if any.
         if (error) {
-          console.error(error);
+          console.error(error)
         }
 
         authentication.deployed().then(function (instance) {
           authenticationInstance = instance
 
           // Attempt to login user.
-          authenticationInstance.update(name, { from: coinbase })
+          authenticationInstance
+            .update(name, { from: coinbase })
             .then(function (result) {
               // If no error, update user.
 
-              dispatch(userUpdated({ "name": name }))
+              dispatch(userUpdated({ name: name }))
 
-              return alert('Name updated!')
+              return console.log('Name updated!')
             })
             .catch(function (result) {
               // If error...
@@ -44,7 +44,7 @@ export function updateUser(name) {
       })
     }
   } else {
-    console.error('Web3 is not initialized.');
+    console.error('Web3 is not initialized.')
   }
 }
 

@@ -3,23 +3,20 @@ import { connect } from 'react-redux'
 import ProfileForm from './ProfileForm'
 import updateUser from '../helpers/updateUser'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    name: state.user.data.name
+    name: state.user.data.name,
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    onProfileFormSubmit: (name) => {
+    onProfileFormSubmit: name => {
       dispatch(updateUser(name))
-    }
+    },
   }
 }
 
-export const ProfileFormContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProfileForm)
+export const ProfileFormContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileForm)
 
 export default ProfileFormContainer

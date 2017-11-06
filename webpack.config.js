@@ -1,51 +1,61 @@
-const webpack = require('webpack');
-const path = require('path');
+// const webpack = require('webpack')
+const path = require('path')
 
 // Webpack Blocks
-const { createConfig, match, entryPoint, setOutput, env, defineConstants, sourceMaps, resolve, addPlugins } = require('@webpack-blocks/webpack');
-const { css, file, url } = require('@webpack-blocks/assets');
-const babel = require('@webpack-blocks/babel');
-const devServer = require('@webpack-blocks/dev-server');
-const extractText = require('@webpack-blocks/extract-text');
-const postcss = require('@webpack-blocks/postcss');
-const sass = require('@webpack-blocks/sass');
-const uglify = require('@webpack-blocks/uglify');
+const {
+  createConfig,
+  match,
+  entryPoint,
+  setOutput,
+  env,
+  defineConstants,
+  sourceMaps,
+  resolve,
+  addPlugins,
+} = require('@webpack-blocks/webpack')
+const { css, file } = require('@webpack-blocks/assets')
+const babel = require('@webpack-blocks/babel')
+const devServer = require('@webpack-blocks/dev-server')
+const extractText = require('@webpack-blocks/extract-text')
+const postcss = require('@webpack-blocks/postcss')
+const sass = require('@webpack-blocks/sass')
+const uglify = require('@webpack-blocks/uglify')
 
 // Webpak Plugins
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CompressionWebpackPlugin = require('compression-webpack-plugin');
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')
+const ManifestPlugin = require('webpack-manifest-plugin')
 
 // PostCSS Plugins
-const autoprefixer = require('autoprefixer');
-const postcssShort = require('postcss-short');
+const autoprefixer = require('autoprefixer')
+const postcssShort = require('postcss-short')
 
 // Local deps
-const paths = require('./paths');
+const paths = require('./paths')
 
 // Constants
-const port = parseInt(process.env.PORT, 10) || 3000;
-const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
-const host = process.env.HOST || 'localhost';
-const publicUrl = './';
+const port = parseInt(process.env.PORT, 10) || 3000
+const protocol = process.env.HTTPS === 'true' ? 'https' : 'http'
+const host = process.env.HOST || 'localhost'
+const publicUrl = './'
 
 if (process.env.NODE_ENV == null) {
-  process.env.NODE_ENV = 'development';
+  process.env.NODE_ENV = 'development'
 }
 
-const shortConfig = { fontWeights: false };
-['border', 'borderRadius', 'color', 'fontSize', 'position', 'size', 'spacing'].forEach((val) => {
-  shortConfig[val] = { skip: '_' };
-});
+const shortConfig = { fontWeights: false }
+;['border', 'borderRadius', 'color', 'fontSize', 'position', 'size', 'spacing'].forEach(val => {
+  shortConfig[val] = { skip: '_' }
+})
 
 const postcssPlugins = [
   postcssShort(shortConfig),
   autoprefixer({
-    browsers: ['last 2 versions', 'ie >= 9'] // https://github.com/ai/browserslist
+    browsers: ['last 2 versions', 'ie >= 9'], // https://github.com/ai/browserslist
   }),
-];
+]
 
 // Webpack Config
 module.exports = createConfig([
@@ -73,38 +83,28 @@ module.exports = createConfig([
     sass(),
     env('production', [extractText()]),
   ]),
-  match(/\.(gif|jpe?g|png|webp)$/, [
-    file(),
-  ]),
-  match(/\.(eot|svg|ttf|woff2?)$/, [
-    file(),
-  ]),
+  match(/\.(gif|jpe?g|png|webp)$/, [file()]),
+  match(/\.(eot|svg|ttf|woff2?)$/, [file()]),
   defineConstants({
     'process.env.NODE_ENV': process.env.NODE_ENV,
   }),
   addPlugins([
-    new CopyWebpackPlugin([
-      { from: 'public' }
-    ], {
-        ignore: [
-          // Doesn't copy any files with a html extension
-          '*.html',
-        ],
-      }),
+    new CopyWebpackPlugin([{ from: 'public' }], {
+      ignore: [
+        // Doesn't copy any files with a html extension
+        '*.html',
+      ],
+    }),
     new InterpolateHtmlPlugin({
-      PUBLIC_URL: publicUrl
+      PUBLIC_URL: publicUrl,
     }),
     new ManifestPlugin({
-      fileName: 'asset-manifest.json'
-    })
+      fileName: 'asset-manifest.json',
+    }),
   ]),
   env('development', [
     entryPoint({
-      bundle: [
-        'react-dev-utils/webpackHotDevClient',
-        paths.appIndexJsRel,
-        paths.appStylesRel,
-      ],
+      bundle: ['react-dev-utils/webpackHotDevClient', paths.appIndexJsRel, paths.appStylesRel],
     }),
     setOutput({
       // Add /* filename */ comments to generated require()s in the output.
@@ -129,11 +129,7 @@ module.exports = createConfig([
   ]),
   env('production', [
     entryPoint({
-      bundle: [
-        paths.appPolyfillsRel,
-        paths.appIndexJsRel,
-        paths.appStylesRel,
-      ],
+      bundle: [paths.appPolyfillsRel, paths.appIndexJsRel, paths.appStylesRel],
     }),
     uglify(),
     addPlugins([
@@ -158,9 +154,8 @@ module.exports = createConfig([
         algorithm: 'gzip',
         test: /\.(js|html|css)$/,
         threshold: 10240,
-        minRatio: 0.8
+        minRatio: 0.8,
       }),
     ]),
   ]),
-]);
-
+])
