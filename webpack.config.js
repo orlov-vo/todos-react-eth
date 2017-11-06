@@ -104,7 +104,7 @@ module.exports = createConfig([
   ]),
   env('development', [
     entryPoint({
-      bundle: ['react-dev-utils/webpackHotDevClient', paths.appIndexJsRel, paths.appStylesRel],
+      bundle: ['react-hot-loader/patch', paths.appIndexDevJsRel, paths.appStylesRel],
     }),
     setOutput({
       // Add /* filename */ comments to generated require()s in the output.
@@ -129,7 +129,7 @@ module.exports = createConfig([
   ]),
   env('production', [
     entryPoint({
-      bundle: [paths.appPolyfillsRel, paths.appIndexJsRel, paths.appStylesRel],
+      bundle: [paths.appIndexProdJsRel, paths.appStylesRel],
     }),
     uglify(),
     addPlugins([
