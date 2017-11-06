@@ -4,7 +4,7 @@ $bem-block-namespaces: ('object': 'o', 'component': 'c', 'utility': 'u', 'view':
 
 /**
  * Colors
- * @link http://color.romanuke.com/tsvetovaya-palitra-3321/
+ * @link http://color.romanuke.com/tsvetovaya-palitra-3607/
  */
 $gray-base: #000;
 $gray-darker: lighten($gray-base, 13%);
@@ -13,11 +13,9 @@ $gray: lighten($gray-base, 35%);
 $gray-light: lighten($gray-base, 50%);
 $gray-lighter: lighten($gray-base, 90%);
 
-$brand-dark: #595a6d;
-$brand-balance: #9aa099;
-$brand-primary: #4d726b;
-$brand-accent: #ffd740;
-$brand-light: #e8d8bf;
+$brand-primary: #d2b29a;
+$brand-accent: #fcd800;
+$brand-light: #e2e1de;
 
 $brand-danger: #ff4444;
 $brand-warning: #ffbb33;
