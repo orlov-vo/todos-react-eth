@@ -1,0 +1,15 @@
+@import '../styles/bootstrap';
+
+@include component('link') {
+  $color: $brand-dark;
+  color: $color;
+  box-shadow: 0 1px 0 rgba($color, 0.2);
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    $color: lighten($color, 30%);
+    color: $color;
+    box-shadow: 0 1px 0 rgba($color, 0.2);
+  }
+}
