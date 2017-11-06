@@ -1,0 +1,9 @@
+@import '../styles/bootstrap';
+
+@include component('logotype') {
+  display: inline-block;
+  color: $white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}

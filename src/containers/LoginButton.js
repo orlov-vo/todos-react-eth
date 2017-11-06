@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 export const LoginButton = connect(undefined, mapDispatchToProps)(props =>
-  Button({ ...props, name: 'Login', mod: 'primary' }),
+  Button({ ...props, name: props.name || 'Login' }),
 )
 
 export default LoginButton

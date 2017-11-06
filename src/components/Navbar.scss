@@ -1,0 +1,20 @@
+@import '../styles/bootstrap';
+
+@include component('navbar') {
+  background-color: rgba($gray-dark, 0.9);
+  color: $white;
+  padding: 0.5rem 2rem;
+
+  @include element('wrap') {
+    display: flex;
+  }
+
+  @include element('menu') {
+    display: block;
+    flex: 1 1 100%;
+
+    @include modifier('right') {
+      text-align: right;
+    }
+  }
+}

@@ -67,6 +67,15 @@
     @include button-variant($gray-lighter, darken($brand-danger, 10%), darken($brand-danger, 15%));
   }
 
+  @include modifier('navbar-link') {
+    @include button-variant($white, transparent, transparent);
+
+    &:hover,
+    &:focus {
+      background-color: mix(transparent, $brand-primary, 90%);
+    }
+  }
+
   @include modifier('transparent') {
     @include button-variant($gray, transparent, transparent);
 
