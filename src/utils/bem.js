@@ -1,4 +1,4 @@
-import block from 'bem-cn'
+import block from 'bem-cn-lite'
 
 /**
  * Configure BEM Class Names generator

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router'
 import { Link } from 'react-router-dom'
-import block from 'bem-cn'
+import block from 'bem-cn-lite'
 
 import {
   HiddenOnlyAuth,
