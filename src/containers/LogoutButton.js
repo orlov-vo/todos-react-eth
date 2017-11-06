@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 export const LogoutButton = connect(undefined, mapDispatchToProps)(props =>
-  Button({ ...props, name: 'Logout' }),
+  Button({ ...props, name: 'Logout', mod: 'primary' }),
 )
 
 export default LogoutButton

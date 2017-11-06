@@ -16,6 +16,7 @@ import Login from '../components/Login'
 import DashboardContainer from './DashboardContainer'
 import SignUp from '../components/SignUp'
 import Profile from '../components/Profile'
+import Button from '../components/Button'
 
 // UI Containers
 import LoginButton from './LoginButton'
@@ -29,27 +30,15 @@ class App extends Component {
   render() {
     const OnlyAuthLinks = VisibleOnlyAuth(() => (
       <span>
-        <li className='pure-menu-item'>
-          <Link to='/dashboard' className='pure-menu-link'>
-            Dashboard
-          </Link>
-        </li>
-        <li className='pure-menu-item'>
-          <Link to='/profile' className='pure-menu-link'>
-            Profile
-          </Link>
-        </li>
+        <Button to='/dashboard'>Dashboard</Button>
+        <Button to='/profile'>Profile</Button>
         <LogoutButton />
       </span>
     ))
 
     const OnlyGuestLinks = HiddenOnlyAuth(() => (
       <span>
-        <li className='pure-menu-item'>
-          <Link to='/signup' className='pure-menu-link'>
-            Sign Up
-          </Link>
-        </li>
+        <Button to='/signup'>Sign Up</Button>
         <LoginButton />
       </span>
     ))

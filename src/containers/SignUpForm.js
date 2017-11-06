@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import Button from '../components/Button'
+
 class SignUpForm extends Component {
   constructor(props) {
     super(props)
@@ -43,9 +45,9 @@ class SignUpForm extends Component {
 
           <br />
 
-          <button type='submit' className='pure-button pure-button-primary'>
+          <Button type='submit' mod='primary'>
             Sign Up
-          </button>
+          </Button>
         </fieldset>
       </form>
     )
