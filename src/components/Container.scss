@@ -1,0 +1,6 @@
+@import '../styles/bootstrap';
+
+@include component('container') {
+  width: $container-witdh;
+  margin: _ auto;
+}
