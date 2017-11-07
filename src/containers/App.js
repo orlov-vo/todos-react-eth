@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
-import { Route, Switch } from 'react-router'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Route, Switch, withRouter } from 'react-router'
+import { connect } from 'react-redux'
 import block from 'bem-cn-lite'
 
 import {
@@ -19,6 +21,7 @@ import Button from '../components/Button'
 import Navbar from '../components/Navbar'
 import Logotype from '../components/Logotype'
 import Container from '../components/Container'
+import EthStatus from './EthStatus'
 
 // UI Containers
 import LoginButton from './LoginButton'
@@ -28,36 +31,36 @@ import LogoutButton from './LogoutButton'
 import './App.scss'
 
 const b = block('app')
-class App extends Component {
-  render() {
-    const OnlyAuthLinks = VisibleOnlyAuth(() => (
-      <span>
-        <Button to='/dashboard' mod='navbar-link' name='Dashboard' />
-        <Button to='/profile' mod='navbar-link' name='Profile' />
-        <LogoutButton mod='navbar-link' />
-      </span>
-    ))
+export function App({ web3 }) {
+  const OnlyAuthLinks = VisibleOnlyAuth(() => (
+    <span>
+      <Button to='/dashboard' mod='navbar-link' name='Dashboard' />
+      <Button to='/profile' mod='navbar-link' name='Profile' />
+      <LogoutButton mod='navbar-link' />
+    </span>
+  ))
 
-    const OnlyGuestLinks = HiddenOnlyAuth(() => (
-      <span>
-        <Button to='/signup' mod='navbar-link' name='Sign Up' />
-        <LoginButton mod='navbar-link' />
-      </span>
-    ))
+  const OnlyGuestLinks = HiddenOnlyAuth(() => (
+    <span>
+      <Button to='/signup' mod='navbar-link' name='Sign Up' />
+      <LoginButton mod='navbar-link' />
+    </span>
+  ))
 
-    const leftMenu = <Logotype />
+  const leftMenu = <Logotype />
 
-    const rightMenu = (
-      <span>
-        <OnlyGuestLinks />
-        <OnlyAuthLinks />
-      </span>
-    )
+  const rightMenu = (
+    <span>
+      <OnlyGuestLinks />
+      <OnlyAuthLinks />
+    </span>
+  )
 
-    return (
-      <div className={b()}>
-        <Navbar left={leftMenu} right={rightMenu} />
+  return (
+    <div className={b()}>
+      <Navbar left={leftMenu} right={web3 && web3.isConnected() ? rightMenu : null} />
 
+      {web3 && web3.isConnected() ? (
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/dashboard' component={UserIsAuthenticated(DashboardContainer)} />
@@ -65,15 +68,32 @@ class App extends Component {
           <Route path='/signup' component={UserIsNotAuthenticated(SignUp)} />
           <Route path='/profile' component={UserIsAuthenticated(Profile)} />
         </Switch>
+      ) : (
+        <Switch>
+          <Route path='/' exact component={Home} />
+        </Switch>
+      )}
 
-        <Container tag='footer'>
-          <div className={b('copyright')}>
-            Copyright &copy; 2017 &mdash; Vladislav Orlov &mdash; orlov-vo.ru
-          </div>
-        </Container>
-      </div>
-    )
+      <Container tag='footer'>
+        <div className={b('copyright')}>
+          Copyright &copy; 2017 &mdash; Vladislav Orlov &mdash; orlov-vo.ru <br />
+          <EthStatus />
+        </div>
+      </Container>
+    </div>
+  )
+}
+
+App.propTypes = {
+  web3: PropTypes.object,
+}
+
+function mapStateToProps(state) {
+  return {
+    web3: state.web3.web3Instance,
   }
 }
 
-export default App
+export const AppContainer = withRouter(connect(mapStateToProps)(App))
+
+export default AppContainer
