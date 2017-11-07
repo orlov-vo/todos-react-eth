@@ -1,0 +1,16 @@
+@import '../styles/bootstrap';
+
+@include component('page-title') {
+  color: $gray-dark;
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 3rem _ 1rem;
+  position: relative;
+
+  &::before {
+    position: absolute _ 0 0 0;
+    content: '';
+    height: 1px;
+    background: linear-gradient(to left, transparent 50%, $gray);
+  }
+}

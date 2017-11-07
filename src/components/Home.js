@@ -1,10 +1,11 @@
 import React from 'react'
 import Container from './Container'
+import PageTitle from './PageTitle'
 
 export function Home() {
   return (
     <Container tag='main'>
-      <h1>Welcome!</h1>
+      <PageTitle title='Welcome!' />
 
       <p>This project is built on new technologies for decentralized applications.</p>
 
