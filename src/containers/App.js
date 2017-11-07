@@ -18,6 +18,7 @@ import Profile from '../components/Profile'
 import Button from '../components/Button'
 import Navbar from '../components/Navbar'
 import Logotype from '../components/Logotype'
+import Container from '../components/Container'
 
 // UI Containers
 import LoginButton from './LoginButton'
@@ -64,6 +65,12 @@ class App extends Component {
           <Route path='/signup' component={UserIsNotAuthenticated(SignUp)} />
           <Route path='/profile' component={UserIsAuthenticated(Profile)} />
         </Switch>
+
+        <Container tag='footer'>
+          <div className={b('copyright')}>
+            Copyright &copy; 2017 &mdash; Vladislav Orlov &mdash; orlov-vo.ru
+          </div>
+        </Container>
       </div>
     )
   }
