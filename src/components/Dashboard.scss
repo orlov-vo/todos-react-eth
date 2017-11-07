@@ -1,0 +1,23 @@
+@import '../styles/bootstrap';
+
+@include component('dashboard') {
+  @include element('no-tasks') {
+    font-weight: 300;
+    text-align: center;
+    margin: 5rem _;
+    font-size: 2rem;
+    color: $gray-light;
+  }
+
+  @include element('filters') {
+    margin: 1rem _;
+  }
+
+  @include element('todos') {
+    margin: 1rem _;
+  }
+
+  @include element('add-todo') {
+    margin: 1rem _;
+  }
+}

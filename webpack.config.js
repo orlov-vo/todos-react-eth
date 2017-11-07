@@ -83,8 +83,8 @@ module.exports = createConfig([
     sass(),
     env('production', [extractText()]),
   ]),
-  match(/\.(gif|jpe?g|png|webp)$/, [file()]),
-  match(/\.(eot|svg|ttf|woff2?)$/, [file()]),
+  match(/\.(gif|jpe?g|png|webp)/, [file()]),
+  match(/\.(eot|svg|ttf|woff2?)(\?.*$|$)/, [file()]),
   defineConstants({
     'process.env.NODE_ENV': process.env.NODE_ENV,
   }),

@@ -1,0 +1,17 @@
+@import '../styles/bootstrap';
+
+@include component('add-todo') {
+  background: $white;
+  box-shadow: 0 0 1rem rgba($gray-light, 0.4);
+  padding: 1rem 2rem;
+  border-radius: 0.2rem;
+
+  @include element('title') {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  @include element('footer') {
+    margin: 1rem _ _;
+  }
+}

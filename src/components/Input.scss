@@ -1,0 +1,28 @@
+@import '../styles/bootstrap';
+
+@include component('input') {
+  display: block;
+  margin: 1rem _;
+
+  & + & {
+    margin: -0.5rem _ _;
+  }
+
+  @include element('control') {
+    display: block;
+    width: 100%;
+    font-size: 1em;
+    line-height: 1.2;
+    font-family: $font-family-base;
+
+    background-color: $white;
+    background-image: none;
+    background-clip: padding-box;
+
+    border: 1px solid rgba($gray, 0.25);
+    outline: none;
+
+    padding: 0.5em 1em;
+    border-radius: 2px;
+  }
+}

@@ -7,11 +7,12 @@ import './Container.scss'
 const b = block('container')
 export function Container(props) {
   const Tag = props.tag || 'div'
-  return <Tag className={b()}>{props.children}</Tag>
+  return <Tag className={b(false, props.className)}>{props.children}</Tag>
 }
 
 Container.propTypes = {
   tag: PropTypes.string,
+  className: PropTypes.string,
   children: PropTypes.node.isRequired,
 }
 

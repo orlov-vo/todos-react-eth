@@ -1,0 +1,48 @@
+@import '../styles/bootstrap';
+
+@include component('todo-item') {
+  $background: $white;
+
+  background: $background;
+  box-shadow: 0 0 1rem rgba($gray-light, 0.4);
+  padding: 1rem 2rem;
+  margin: 1rem _;
+  border-radius: 0.2rem;
+
+  & + & {
+    margin: -0.5rem _ _;
+  }
+
+  @include element('header') {
+    display: flex;
+  }
+
+  @include element('actions') {
+    flex: 0 0 auto;
+  }
+
+  @include element('title') {
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin: _ _ 1rem;
+    flex: 1 1 100%;
+  }
+
+  @include element('description') {
+    margin: _ _ 1rem;
+
+    @include state('empty') {
+      color: $gray-light;
+    }
+  }
+
+  @include modifier('completed') {
+    color: $gray-light;
+    background: rgba($background, 0.8);
+    box-shadow: none;
+  }
+
+  @include modifier('overdue') {
+    background: mix($background, $brand-danger);
+  }
+}

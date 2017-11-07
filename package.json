@@ -67,6 +67,9 @@
   },
   "dependencies": {
     "bem-cn-lite": "^3.0.0",
+    "classnames": "^2.2.5",
+    "font-awesome": "^4.7.0",
+    "moment": "^2.19.1",
     "prop-types": "^15.6.0",
     "qs": "^6.5.1",
     "react": "^16.0.0",

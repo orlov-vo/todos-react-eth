@@ -43,6 +43,10 @@
 
   transition: 0.3s background-color;
 
+  & + & {
+    margin: _ _ _ 0.25rem;
+  }
+
   @include state('disabled') {
     cursor: default;
   }

@@ -1,0 +1,33 @@
+@import '../styles/bootstrap';
+
+@include component('badge') {
+  display: inline-flex;
+  overflow: hidden;
+  margin: 0 0.2rem;
+  padding: 0.2rem;
+  font-size: 0.7rem;
+  color: $gray-light;
+  border-radius: 0.1rem;
+  background: rgba($gray-base, 0.05);
+
+  @include element('text') {
+    padding: _ 0.1rem;
+  }
+
+  @include element('icon') {
+    padding: _ 0.1rem _ 0.2rem;
+
+    &:last-child {
+      padding: _ 0.2rem _ 0.1rem;
+    }
+  }
+
+  @include state('icon-only') {
+    @include modifies-element('text') {
+      display: none;
+    }
+    @include modifies-element('icon') {
+      padding: _ 0.2rem;
+    }
+  }
+}
